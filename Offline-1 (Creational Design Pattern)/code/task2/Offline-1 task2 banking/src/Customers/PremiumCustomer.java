@@ -8,7 +8,7 @@ public class PremiumCustomer implements Customer{
     private Account account;
     private Loan loan;
 
-    PremiumCustomer(){
+    public PremiumCustomer(){
         this.account = new Account(3.5);
         this.loan = new Loan(12);
     }
@@ -31,6 +31,10 @@ public class PremiumCustomer implements Customer{
     @Override
     public void setLoan(Loan loan) {
         this.loan = loan;
+    }
+
+    public String toString(){
+        return "Premium Customer";
     }
     
 }

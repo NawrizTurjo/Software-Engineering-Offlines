@@ -9,7 +9,7 @@ public class RegularCustomer implements Customer {
     private Account account;
     private Loan loan;
 
-    RegularCustomer(){
+    public RegularCustomer(){
         this.account = new Account(2.5);
         this.loan = new Loan(14);
     }
@@ -32,6 +32,10 @@ public class RegularCustomer implements Customer {
     @Override
     public void setLoan(Loan loan) {
         this.loan = loan;
+    }
+
+    public String toString(){
+        return "Regular Customer";
     }
     
 }

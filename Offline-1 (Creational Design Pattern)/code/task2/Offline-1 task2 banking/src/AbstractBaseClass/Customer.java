@@ -11,5 +11,7 @@ public interface Customer {
     public Loan getLoan();
 
     public void setLoan(Loan loan);
+
+    public String toString();
     
 }

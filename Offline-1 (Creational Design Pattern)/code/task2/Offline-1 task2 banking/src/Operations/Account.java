@@ -48,9 +48,14 @@ public class Account implements Operation {
     }
 
     @Override
-    public double getTotaklCompoundInterest(int year) {
+    public double getTotalCompoundInterest(int year) {
         double totalInterest = this.amount * Math.pow((1 + this.interestRate), year);
         return totalInterest;
+    }
+
+    @Override
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
 }

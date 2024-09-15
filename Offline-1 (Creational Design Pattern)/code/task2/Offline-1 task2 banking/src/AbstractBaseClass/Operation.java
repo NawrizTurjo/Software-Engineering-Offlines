@@ -9,6 +9,8 @@ public interface Operation {
 
     public void withdraw(int amount);
 
+    public void setAmount(int amount);
+
     // double interestRate = 0.5;
 
     public void setInterestRate(double rate);
@@ -17,6 +19,6 @@ public interface Operation {
 
     public double getTotalInterest(int year);
 
-    public double getTotaklCompoundInterest(int year);
+    public double getTotalCompoundInterest(int year);
 
 }
