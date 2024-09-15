@@ -1,6 +1,6 @@
 package AbstractFactory.FactoryClass;
 
-import AbstractFactory.AbstractClass.AbstractFactory;
+import AbstractFactory.AbstractFactoryClass.AbstractFactory;
 import AbstractFactory.ConcreteClasses.Rectangle;
 import AbstractFactory.ConcreteClasses.Square;
 import AbstractFactory.Interfaces.Shape;

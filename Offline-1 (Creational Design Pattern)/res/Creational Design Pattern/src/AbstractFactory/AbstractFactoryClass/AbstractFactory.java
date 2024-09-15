@@ -1,4 +1,4 @@
-package AbstractFactory.AbstractClass;
+package AbstractFactory.AbstractFactoryClass;
 
 import AbstractFactory.Interfaces.Shape;
 

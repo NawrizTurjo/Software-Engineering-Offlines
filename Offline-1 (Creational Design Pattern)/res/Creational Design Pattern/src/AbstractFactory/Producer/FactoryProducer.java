@@ -1,6 +1,6 @@
 package AbstractFactory.Producer;
 
-import AbstractFactory.AbstractClass.AbstractFactory;
+import AbstractFactory.AbstractFactoryClass.AbstractFactory;
 import AbstractFactory.FactoryClass.RoundedShapeFactory;
 import AbstractFactory.FactoryClass.ShapeFactory;
 
