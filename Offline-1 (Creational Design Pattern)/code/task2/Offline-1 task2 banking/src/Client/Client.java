@@ -16,7 +16,6 @@ public class Client {
         // Operation account = operationFactory.getOperation("account");
         // Account  = (Account) operation;
 
-        
         // regularCustomer.setAccount((Account)account);
         regularCustomer.getLoan().setAmount(15000);
         System.out.println(regularCustomer.getLoan().getTotalCompoundInterest(10));
