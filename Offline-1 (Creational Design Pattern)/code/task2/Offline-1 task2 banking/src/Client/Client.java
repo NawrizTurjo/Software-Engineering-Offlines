@@ -11,10 +11,10 @@ public class Client {
         AbstractFactory customerFactory = FactoryProducer.getFactory("customer");
         Customer regularCustomer = customerFactory.getCustomer("regular");
         System.out.println(regularCustomer);
-        
+
         AbstractFactory operationFactory = FactoryProducer.getFactory("operation");
         // Operation account = operationFactory.getOperation("account");
-        // Account  = (Account) operation;
+        // Account = (Account) operation;
 
         // regularCustomer.setAccount((Account)account);
         regularCustomer.getLoan().setAmount(15000);
