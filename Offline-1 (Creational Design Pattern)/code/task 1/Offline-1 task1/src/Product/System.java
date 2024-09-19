@@ -7,5 +7,7 @@ import Interfaces.Microcontroller;
 public class System {
     Microcontroller mc;
     InternetConnection ic;
+    Display display;
+    Package pkg;
     
 }
