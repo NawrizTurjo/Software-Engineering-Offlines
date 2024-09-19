@@ -9,4 +9,7 @@ public class TouchDisplay implements Display{
         System.out.println("Touch Display has been added to the system.");
     }
     
+    public String toString() {
+        return "Touch Display";
+    }
 }

@@ -7,4 +7,7 @@ public class ArduinoMega implements Microcontroller{
     public void addMicrocontroller() {
         System.out.println("Arduino Mega has been added to the system.");
     }
+    public String toString() {
+        return "Arduino Mega";
+    }
 }

@@ -8,5 +8,9 @@ public class BuiltIn implements Storage {
     public void addStorage() {
         System.out.println("This microcontroller has built-in storage");
     }
+
+    public String toString() {
+        return "Built-in Storage";
+    }
     
 }

@@ -7,4 +7,7 @@ public class Django implements WebServer {
         System.out.println("Django added to the project.");
     }
     
+    public String toString() {
+        return "Django Web Server";
+    }
 }

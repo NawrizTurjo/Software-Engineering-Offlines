@@ -8,5 +8,8 @@ public class LCDDisplay implements Display {
     public void addDisplay() {
         System.out.println("LCD Display has been added to the system.");
     }
+    public String toString() {
+        return "LCD Display";
+    }
 
 }

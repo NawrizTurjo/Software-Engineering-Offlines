@@ -9,4 +9,8 @@ public class RFID implements Ticketing{
         System.out.println("RFID ticketing added");
     }
 
+    public String toString() {
+        return "RFID Ticketing";
+    }
+
 }

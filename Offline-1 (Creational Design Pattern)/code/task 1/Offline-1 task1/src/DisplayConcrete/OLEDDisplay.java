@@ -9,4 +9,7 @@ public class OLEDDisplay implements Display{
         System.out.println("OLED Display has been added to the system.");
     }
     
+    public String toString() {
+        return "OLED Display";
+    }
 }

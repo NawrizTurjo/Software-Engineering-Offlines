@@ -9,4 +9,8 @@ public class NFC implements Ticketing {
         System.out.println("NFC ticketing added");
     }
 
+    public String toString() {
+        return "NFC Ticketing";
+    }
+
 }

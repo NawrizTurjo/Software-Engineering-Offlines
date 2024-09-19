@@ -8,5 +8,9 @@ public class SDCard implements Storage {
     public void addStorage() {
         System.out.println("SD card storage added");
     }
+
+    public String toString() {
+        return "SD Card Storage";
+    }
     
 }

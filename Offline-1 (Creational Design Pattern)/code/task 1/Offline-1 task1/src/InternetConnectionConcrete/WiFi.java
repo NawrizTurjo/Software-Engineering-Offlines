@@ -7,4 +7,7 @@ public class WiFi implements InternetConnection {
         System.out.println("WiFi added");
     }
     
+    public String toString() {
+        return "WiFi";
+    }
 }

@@ -9,4 +9,7 @@ public class LEDDisplay implements Display{
         System.out.println("LED Display has been added to the system.");
     }
     
+    public String toString() {
+        return "LED Display";
+    }
 }
