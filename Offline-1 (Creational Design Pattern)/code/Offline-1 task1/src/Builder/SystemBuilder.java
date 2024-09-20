@@ -1,27 +1,27 @@
 package Builder;
 
-import ControllerConcrete.Default;
-import ControllerConcrete.ThirdParty;
-import DisplayConcrete.TouchDisplay;
-import Factories.InternetConnectionFactory;
-import Factories.PackageFactory;
-import Factories.WebServerFactory;
-import Interfaces.InternetConnection;
-import Interfaces.Microcontroller;
-import Interfaces.Payment;
-import Interfaces.SystemPackage;
-import Interfaces.WebServer;
-import MicrocontrollerConcrete.ATMega32;
-import MicrocontrollerConcrete.ArduinoMega;
-import MicrocontrollerConcrete.RaspberryPi;
+import ControllerConcrete.*;
+import Factories.*;
+import Interfaces.*;
+import MicrocontrollerConcrete.*;
 import Product.TicketingSystem;
-import StorageConcrete.BuiltIn;
-import StorageConcrete.SDCard;
-import TicketingConcrete.NFC;
-import TicketingConcrete.RFID;
+import StorageConcrete.*;
+import TicketingConcrete.*;
 
-public class SystemBuilder implements SystemBuilderInterface{
+public class SystemBuilder implements SystemBuilderInterface {
+    // private static SystemBuilder instance;
     TicketingSystem system = new TicketingSystem();
+
+    // private SystemBuilder() {
+    //     this.system = new TicketingSystem();
+    // }
+
+    // public static synchronized SystemBuilder getInstance() {
+    //     if (instance == null) {
+    //         instance = new SystemBuilder();
+    //     }
+    //     return instance;
+    // }
 
     public SystemBuilder addPackage(String pkg) {
         PackageFactory packageFactory = new PackageFactory();

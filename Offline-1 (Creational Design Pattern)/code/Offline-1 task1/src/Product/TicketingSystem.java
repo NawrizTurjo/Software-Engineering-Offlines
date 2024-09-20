@@ -1,6 +1,5 @@
 package Product;
 
-import AbstractBaseClass.DisplayUnit;
 import Interfaces.Controller;
 import Interfaces.InternetConnection;
 import Interfaces.Payment;
@@ -10,7 +9,6 @@ import Interfaces.Ticketing;
 import Interfaces.WebServer;
 
 public class TicketingSystem {
-    private static Object out;
     InternetConnection ic;
     SystemPackage pkg;
     Ticketing ticketing;
