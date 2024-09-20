@@ -1,12 +1,3 @@
-BANGLADESH UNIVERSITY OF ENGINEERING AND TECHNOLOGY
-
-Department of Computer Science and Engineering
-
-January 2024 CSE 214 Offline Assignment on
-
-Creational Design Patterns
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
 **Problem 1:**
 
 Consider a company producing public transport ticketing systems which are commonly used in metro systems. The system consists of a hardware device and a web server for the administrator. Passengers provide necessary information on the screen including the destination and the number of tickets from which the ticket price is determined. After the customer completes the payment, the tickets are issued to them. The admin can manage passenger data and track trips on the web. The major components of the system are described as follows:
