@@ -1,18 +1,17 @@
-## Getting Started
+**Problem 2:**
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+You are tasked with designing a system for a bank that offers multiple services. For now, we are considering two major operations: loan and savings account operations. The bank has three customer types: Regular, Premium and VIP. The payment schemes and interest types vary based on the customer type. The interest rates for different customers are shown in the following table.
 
-## Folder Structure
 
-The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+<table><tr><th colspan="1" rowspan="2" valign="top">Operation</th><th colspan="3" valign="top">Interest rate</th></tr>
+<tr><td colspan="1" valign="top">Regular</td><td colspan="1" valign="top">Premium</td><td colspan="1" valign="top">VIP</td></tr>
+<tr><td colspan="1" valign="top">Accounts</td><td colspan="1" valign="top">2.5%</td><td colspan="1" valign="top">3.5%</td><td colspan="1" valign="top">5%</td></tr>
+<tr><td colspan="1" valign="top">Loan</td><td colspan="1" valign="top">14%</td><td colspan="1" valign="top">12%</td><td colspan="1" valign="top">10%</td></tr>
+</table>
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+**Tasks:**
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- Identify the design pattern(s) that can best capture the scenario.
+- Implement the appropriate classes. The loan and account classes must contain functions that calculate the total interest given a certain period of time. You may use simple or compound interest formulas.
+- A simple demonstration showing a user utilizing these functionalities would suffice.
