@@ -10,5 +10,6 @@ public class Client {
         System.out.print("input a path:");
         String path = sc.nextLine();
         FileFactory.getFile(path).loadDocument(path);
+        sc.close();
     }
 }
