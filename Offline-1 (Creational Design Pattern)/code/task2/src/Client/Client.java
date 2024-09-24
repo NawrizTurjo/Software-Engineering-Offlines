@@ -22,9 +22,16 @@ public class Client {
 
         AbstractFactory customerFactory = FactoryProducer.getFactory(factoryType);
 
-        Operation operation = customerFactory.getLoan(amount);
-        System.out.println(
-                opeartionType + " amount after " + years + " years: " + operation.getTotalCompoundInterest(years));
+        Operation operation;
+        if (opeartionType.equalsIgnoreCase("Loan")) {
+            operation = customerFactory.getLoan(amount);
+            System.out.println(
+                    opeartionType + " amount after " + years + " years: " + operation.getTotalCompoundInterest(years));
+        } else if (opeartionType.equalsIgnoreCase("Account")) {
+            operation = customerFactory.getAccount(amount);
+            System.out.println(
+                    opeartionType + " amount after " + years + " years: " + operation.getTotalCompoundInterest(years));
+        }
 
         scanner.nextLine();
 
@@ -42,10 +49,15 @@ public class Client {
         System.out.print("Enter years: ");
         years = scanner.nextInt();
 
-        operation = customerFactory.getAccount(amount);
-        System.out.println(
-                opeartionType + " amount after " + years + " years: " + operation.getTotalCompoundInterest(years));
-
+        if (opeartionType.equalsIgnoreCase("Loan")) {
+            operation = customerFactory.getLoan(amount);
+            System.out.println(
+                    opeartionType + " amount after " + years + " years: " + operation.getTotalCompoundInterest(years));
+        } else if (opeartionType.equalsIgnoreCase("Account")) {
+            operation = customerFactory.getAccount(amount);
+            System.out.println(
+                    opeartionType + " amount after " + years + " years: " + operation.getTotalCompoundInterest(years));
+        }
         scanner.close();
 
     }

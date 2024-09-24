@@ -17,12 +17,12 @@ public class SystemDirector {
     //     return instance;
     // }
 
-    public static TicketingSystem buildSystem(SystemBuilderInterface builder, String pkg, String ic, String web) {
+    public static void buildSystem(SystemBuilderInterface builder, String pkg, String ic, String web) {
         // this.builder = builder;
         builder.addPackage(pkg);
         builder.addInternetConnection(ic);
         builder.addWebServer(web);
-        return builder.buildAdditionalParts(pkg);
+        builder.buildAdditionalParts(pkg);
     }
     
     // public TicketingSystem construct(String pkg) {

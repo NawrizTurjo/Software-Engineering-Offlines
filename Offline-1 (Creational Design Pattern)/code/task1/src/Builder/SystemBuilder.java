@@ -48,7 +48,7 @@ public class SystemBuilder implements SystemBuilderInterface {
         this.system = new TicketingSystem();
     }
 
-    public TicketingSystem buildAdditionalParts(String pkg) {
+    public void buildAdditionalParts(String pkg) {
         Microcontroller microcontroller = system.getPkg().getMicrocontroller();
         if (microcontroller instanceof ATMega32 || microcontroller instanceof ArduinoMega) {
             this.system.setTicketing(new RFID());
@@ -61,6 +61,10 @@ public class SystemBuilder implements SystemBuilderInterface {
             this.system.setStorage(new BuiltIn());
             this.system.setController(new Default());
         }
+        // return this.system;
+    }
+
+    public TicketingSystem getSystem() {
         return this.system;
     }
 

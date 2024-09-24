@@ -31,9 +31,11 @@ public class Client {
         System.out.print("Enter the type of web server: ");
         String webServer = sc.nextLine();
 
-        // SystemDirector director = SystemDirector.buildSystem(builder, packageName, internetConnection, webServer);
+        // SystemDirector director = SystemDirector.buildSystem(builder, packageName,
+        // internetConnection, webServer);
         // TicketingSystem ts = director.construct(packageName);
-        TicketingSystem ts = SystemDirector.buildSystem(builder, packageName, internetConnection, webServer);
+        SystemDirector.buildSystem(builder, packageName, internetConnection, webServer);
+        TicketingSystem ts = builder.getSystem();
         ts.display();
 
         System.out.println("------------------------------------------------------------------------");
@@ -46,8 +48,11 @@ public class Client {
         webServer = sc.nextLine();
 
         builder.reset();
-        // director = new SystemDirector(builder, packageName, internetConnection, webServer);
-        ts = SystemDirector.buildSystem(builder, packageName, internetConnection, webServer);
+        // director = new SystemDirector(builder, packageName, internetConnection,
+        // webServer);
+        SystemDirector.buildSystem(builder, packageName, internetConnection, webServer);
+
+        ts = builder.getSystem();
         ts.display();
 
         System.out.println("------------------------------------------------------------------------");
@@ -60,8 +65,11 @@ public class Client {
         webServer = sc.nextLine();
 
         builder.reset();
-        // director = new SystemDirector(builder, packageName, internetConnection, webServer);
-        ts = SystemDirector.buildSystem(builder, packageName, internetConnection, webServer);
+        // director = new SystemDirector(builder, packageName, internetConnection,
+        // webServer);
+        SystemDirector.buildSystem(builder, packageName, internetConnection, webServer);
+
+        ts = builder.getSystem();
         ts.display();
 
         System.out.println("------------------------------------------------------------------------");
@@ -74,8 +82,11 @@ public class Client {
         webServer = sc.nextLine();
 
         builder.reset();
-        // director = new SystemDirector(builder, packageName, internetConnection, webServer);
-        ts = SystemDirector.buildSystem(builder, packageName, internetConnection, webServer);
+        // director = new SystemDirector(builder, packageName, internetConnection,
+        // webServer);
+        SystemDirector.buildSystem(builder, packageName, internetConnection, webServer);
+
+        ts = builder.getSystem();
         ts.display();
 
         sc.close();
