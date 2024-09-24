@@ -1,18 +1,14 @@
-## Getting Started
+## CSE 214
+## Online on Creational Pattern
+**Time: 30 minutes**
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-## Folder Structure
+You are developing a document editor that supports 3 types of file formats: *.docx*, *.pdf*,
+and *.txt*. To handle each file type, you need different document processors. All
+document processors implement an interface called DocumentProcessor, which
+contains two methods - **LoadDocument** and **SaveDocument** (For now, these may just
+print a message).
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Given a file name, your system has to recognize the file type and use the appropriate
+document processor to load and save a file. The output will be two messages showing
+that the file was loaded and saved.
