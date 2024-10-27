@@ -195,20 +195,23 @@ class ComboFacade {
 public class KhaidaiBostro {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        item burger = new item("Burger", 300);
-        item fries = new item("Fries", 100);
-        item wedges = new item("Wedges", 150);
-        item shwarma = new item("Shwarma", 200);
-        item drink = new item("Drink", 25);
-        ComboFacade combo1 = new ComboFacade("Combo1");
-        combo1.add(burger);
-        combo1.add(fries);
-        combo1.makeFree(drink);
+        MenuItem burger = new item("Burger", 300);
+        MenuItem fries = new item("Fries", 100);
+        MenuItem wedges = new item("Wedges", 150);
+        MenuItem shwarma = new item("Shwarma", 200);
+        MenuItem drink = new item("Drink", 25);
+        ComboFacade comboFacade1 = new ComboFacade("Combo1");
+        comboFacade1.add(burger);
+        comboFacade1.add(fries);
+        comboFacade1.makeFree(drink);
 
-        ComboFacade combo2 = new ComboFacade("Combo2");
-        combo2.add(shwarma);
-        combo2.add(drink);
-        combo2.setDiscount(40.0 / 9.0);
+        ComboFacade comboFacade2 = new ComboFacade("Combo2");
+        comboFacade2.add(shwarma);
+        comboFacade2.add(drink);
+        comboFacade2.setDiscount(40.0 / 9.0);
+
+        ComboItem combo1 = comboFacade1.getComboItem();
+        ComboItem combo2 = comboFacade2.getComboItem();
 
         class Pair {
             private String x;
@@ -233,8 +236,8 @@ public class KhaidaiBostro {
         menu.add(new Pair("Wedges", wedges));
         menu.add(new Pair("Shwarma", shwarma));
         menu.add(new Pair("Drink", drink));
-        menu.add(new Pair("Combo1", combo1.getComboItem()));
-        menu.add(new Pair("Combo2", combo2.getComboItem()));
+        menu.add(new Pair("Combo1", combo1));
+        menu.add(new Pair("Combo2", combo2));
 
         System.out.println("Menu:");
         for (Pair entry : menu) {
