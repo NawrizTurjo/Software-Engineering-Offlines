@@ -248,7 +248,7 @@ public class KhaidaiBostro {
             if (num == 1) {
                 System.out.println("Enter the name of the combo:");
                 String comboName = sc.nextLine();
-                
+
                 ComboFacade newCombo = new ComboFacade(comboName);
                 System.out.println("Available commands:\r\n" + //
                         "Add [item]\r\n" + //
@@ -305,7 +305,7 @@ public class KhaidaiBostro {
             System.out.println("Press 1 to create a combo, 2 to view menu and 0 to exit");
             num = sc.nextInt();
         }
-
+        sc.close();
     }
 
 }
