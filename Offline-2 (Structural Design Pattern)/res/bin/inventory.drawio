@@ -1,0 +1,98 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram id="j40WSr4AiGo7OQh1qQzt" name="Page-1">
+    <mxGraphModel dx="942" dy="551" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;InventoryReport&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ generateReport()&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#fff2cc;strokeColor=#d6b656;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="100" y="387" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=default;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" target="11" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="195" y="517" as="sourcePoint" />
+            <mxPoint x="210" y="497" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="" style="endArrow=none;dashed=1;endFill=0;endSize=12;html=1;strokeColor=default;flowAnimation=0;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="200" y="487" as="sourcePoint" />
+            <mxPoint x="430" y="487" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="487" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Abstract Class&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ReportDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- decoratedReport: InventoryReport&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&amp;nbsp;+ ReportDecorator(s:InventoryReport)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ generateReport()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="320" y="517" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="" style="endArrow=none;dashed=1;endFill=0;endSize=12;html=1;strokeColor=default;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" target="16" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="435" y="487" as="sourcePoint" />
+            <mxPoint x="550" y="421.68" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;strokeColor=default;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" target="16" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="435" y="737" as="sourcePoint" />
+            <mxPoint x="530" y="667" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="" style="endArrow=none;endSize=16;endFill=0;html=1;strokeColor=default;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="190" y="717" as="sourcePoint" />
+            <mxPoint x="670" y="717" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="" style="endArrow=none;endSize=16;endFill=0;html=1;strokeColor=default;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="190" y="717" as="sourcePoint" />
+            <mxPoint x="190" y="737" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="28" value="" style="endArrow=none;endSize=16;endFill=0;html=1;strokeColor=default;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="670" y="717" as="sourcePoint" />
+            <mxPoint x="670" y="737" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="35" value="" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;strokeColor=default;jumpStyle=line;jumpSize=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.784;exitY=-0.006;exitDx=0;exitDy=0;exitPerimeter=0;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="16" target="11" edge="1">
+          <mxGeometry x="-1" y="3" relative="1" as="geometry">
+            <mxPoint x="670" y="437" as="sourcePoint" />
+            <mxPoint x="320" y="421.64" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="&lt;p style=&quot;margin: 4px 0px 0px;&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Client&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;" style="verticalAlign=top;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#d5e8d4;strokeColor=#82b366;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="125" y="287" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="" style="endArrow=open;html=1;endSize=12;startArrow=none;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;strokeColor=default;jumpStyle=line;jumpSize=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="37" target="11" edge="1">
+          <mxGeometry x="-1" y="3" relative="1" as="geometry">
+            <mxPoint x="160" y="367" as="sourcePoint" />
+            <mxPoint x="320" y="367" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="40" value="Roll: &lt;font color=&quot;#0000cc&quot; face=&quot;Comic Sans MS&quot;&gt;2105032&lt;/font&gt;" style="text;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;labelBackgroundColor=none;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="630" y="10" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="41" value="Date: &lt;font face=&quot;Comic Sans MS&quot; color=&quot;#0000cc&quot;&gt;03-11-2024&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="590" y="50" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="42" value="&lt;font color=&quot;#00994d&quot; face=&quot;Verdana&quot;&gt;UML Class Diagram for Problem 2&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=41;fontStyle=1;verticalAlign=middle;align=center;labelBackgroundColor=none;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="20" y="100" width="820" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="xqUnj2EW66AiWpOV1xBe-48" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DiscountReportDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ generateReport()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="100" y="737" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xqUnj2EW66AiWpOV1xBe-49" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;RiskReportDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ generateReport()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="340" y="737" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xqUnj2EW66AiWpOV1xBe-50" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FeedbackReportDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ generateReport()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="580" y="737" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xqUnj2EW66AiWpOV1xBe-56" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LegacyReport&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;&amp;nbsp;+ generateReport()&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;shadow=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="112.5" y="517" width="165" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -7,12 +7,18 @@ interface MenuItem {
 
     int getPrice();
 
+    // List<MenuItem> getItems();
+    // int getTotalPrice();
+    // void remove(MenuItem item);
+    // void add(MenuItem item);
+    // double getDiscount();
+    // void setDiscount(double discount);
     // void setFree();
 }
 
 class item implements MenuItem {
     private String name;
-    protected double price;
+    private double price;
 
     item(String name, double price) {
         this.name = name;
@@ -43,6 +49,38 @@ class item implements MenuItem {
         sb.append("tk");
         return sb.toString();
     }
+
+    // @Override
+    // public List<MenuItem> getItems() {
+    // return null;
+    // }
+
+    // @Override
+    // public int getTotalPrice() {
+    // return (int) Math.ceil(this.price);
+    // }
+
+    // @Override
+    // public void remove(MenuItem item) {
+
+    // }
+
+    // @Override
+    // public void add(MenuItem item) {
+
+    // }
+
+    // @Override
+    // public double getDiscount() {
+    // return 0;
+    // }
+
+    // @Override
+    // public void setDiscount(double discount) {
+    // // TODO Auto-generated method stub
+    // throw new UnsupportedOperationException("Unimplemented method
+    // 'setDiscount'");
+    // }
 
 }
 
@@ -163,6 +201,21 @@ class FreeDecorator extends MenuItemDecorator {
 
 }
 
+// class DiscountDecorator extends MenuItemDecorator{
+//     private double discount;
+//     public DiscountDecorator(MenuItem menuItem, double discount){
+//         super(menuItem);
+//         this.discount = discount;
+//     }
+//     @Override
+//     public int getPrice(){
+//         return (int) Math.ceil(menuItem.getPrice() - menuItem.getPrice() * discount / 100);
+//     }
+//     public String toString(){
+//         return menuItem.getName() + this.getPrice();
+//     }
+// }
+
 class ComboFacade {
     private ComboItem comboItem;
 
@@ -192,7 +245,7 @@ class ComboFacade {
     }
 }
 
-public class KhaidaiBostro {
+public class KhaidaiBistro {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         MenuItem burger = new item("Burger", 300);
@@ -200,6 +253,7 @@ public class KhaidaiBostro {
         MenuItem wedges = new item("Wedges", 150);
         MenuItem shwarma = new item("Shwarma", 200);
         MenuItem drink = new item("Drink", 25);
+
         ComboFacade comboFacade1 = new ComboFacade("Combo1");
         comboFacade1.add(burger);
         comboFacade1.add(fries);
@@ -245,8 +299,8 @@ public class KhaidaiBostro {
         }
 
         System.out.println("Press 1 to create a combo, 2 to view menu and 0 to exit");
-        int num = sc.nextInt();
-        while (num != 0) {
+        int num;
+        while ((num = sc.nextInt()) != 0) {
             sc.nextLine();
             if (num == 1) {
                 System.out.println("Enter the name of the combo:");
@@ -303,10 +357,12 @@ public class KhaidaiBostro {
                 for (Pair entry : menu) {
                     System.out.println(entry.getValue());
                 }
+            } else {
+                System.out.println("Invalid input");
             }
 
             System.out.println("Press 1 to create a combo, 2 to view menu and 0 to exit");
-            num = sc.nextInt();
+            // num = sc.nextInt();
         }
         sc.close();
     }
