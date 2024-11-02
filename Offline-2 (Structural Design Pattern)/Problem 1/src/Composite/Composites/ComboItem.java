@@ -63,7 +63,7 @@ public class ComboItem implements MenuItem {
     @Override
     public int getPrice() {
         this.price = getTotalPrice();
-        double totalPrice = this.price - this.price * this.discount / 100;
+        double totalPrice = Math.max(0, this.price - this.price * this.discount / 100);
         return (int) Math.ceil(totalPrice);
     }
 
@@ -95,9 +95,9 @@ public class ComboItem implements MenuItem {
         sb.append(this.getPrice());
         sb.append("tk");
         // if (discount != 0) {
-        //     sb.append(" (");
-        //     sb.append(discount);
-        //     sb.append("% off)");
+        // sb.append(" (");
+        // sb.append(discount);
+        // sb.append("% off)");
         // }
         return sb.toString();
     }
