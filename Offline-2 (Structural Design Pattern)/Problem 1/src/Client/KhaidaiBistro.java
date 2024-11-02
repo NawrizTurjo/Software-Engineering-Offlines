@@ -7,8 +7,6 @@ import java.util.Scanner;
 import Composite.Composites.ComboItem;
 import Composite.Interfaces.MenuItem;
 import Composite.Leaf.Item;
-// import Decorator.Decorators.DiscountDecorator;
-// import Decorator.Decorators.FreeDecorator;
 
 public class KhaidaiBistro {
     public static void main(String[] args) {
@@ -69,11 +67,11 @@ public class KhaidaiBistro {
                 String comboName = sc.nextLine();
 
                 ComboItem newCombo = new ComboItem(comboName);
-                System.out.println("Available commands:\r\n" + //
-                        "Add [item]\r\n" + //
-                        "Remove [item]\r\n" + //
-                        "Free [item]\r\n" + //
-                        "Discount [percentage]\r\n" + //
+                System.out.println("Available commands:\r\n" +
+                        "Add [item]\r\n" +
+                        "Remove [item]\r\n" +
+                        "Free [item]\r\n" +
+                        "Discount [percentage]\r\n" +
                         "Done\r\n");
                 while (true) {
                     String command = sc.nextLine();
@@ -96,16 +94,13 @@ public class KhaidaiBistro {
                     } else if (tokens[0].equalsIgnoreCase("Free")) {
                         for (Pair entry : menu) {
                             if (entry.getString().equalsIgnoreCase(tokens[1])) {
-                                // newCombo = new FreeDecorator(newCombo, entry.getValue());
-                                newCombo.add(new Item(entry.getValue().getName(),0));
+                                newCombo.addFreeItem(newCombo);
                             }
                         }
                     } else if (tokens[0].equalsIgnoreCase("Discount")) {
-                        // newCombo = new DiscountDecorator(newCombo, Double.parseDouble(tokens[1]));
                         newCombo.setDiscount(Double.parseDouble(tokens[1]));
                     }
                 }
-                // System.out.println(newCombo.getComboItem());
                 System.out.println("Your Combo:");
                 System.out.println(newCombo.getName());
                 for (MenuItem item : newCombo.getItems()) {
@@ -126,7 +121,7 @@ public class KhaidaiBistro {
             }
 
             System.out.println("Press 1 to create a combo, 2 to view menu and 0 to exit");
-            // num = sc.nextInt();
+
         }
         sc.close();
     }

@@ -23,7 +23,6 @@ public class Item implements MenuItem {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        // sb.append("Item: ");
         sb.append(this.name);
         if (this.price == 0) {
             sb.append("(Free!!!)");
