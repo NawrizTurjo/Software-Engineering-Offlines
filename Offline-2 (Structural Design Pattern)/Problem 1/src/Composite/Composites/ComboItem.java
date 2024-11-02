@@ -94,11 +94,11 @@ public class ComboItem implements MenuItem {
         sb.append(" )-");
         sb.append(this.getPrice());
         sb.append("tk");
-        if (discount != 0) {
-            sb.append(" (");
-            sb.append(discount);
-            sb.append("% off)");
-        }
+        // if (discount != 0) {
+        //     sb.append(" (");
+        //     sb.append(discount);
+        //     sb.append("% off)");
+        // }
         return sb.toString();
     }
 

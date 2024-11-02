@@ -7,8 +7,8 @@ import java.util.Scanner;
 import Composite.Composites.ComboItem;
 import Composite.Interfaces.MenuItem;
 import Composite.Leaf.Item;
-import Decorator.Decorators.DiscountDecorator;
-import Decorator.Decorators.FreeDecorator;
+// import Decorator.Decorators.DiscountDecorator;
+// import Decorator.Decorators.FreeDecorator;
 
 public class KhaidaiBistro {
     public static void main(String[] args) {
@@ -22,12 +22,12 @@ public class KhaidaiBistro {
         ComboItem combo1 = new ComboItem("Combo1");
         combo1.add(burger);
         combo1.add(fries);
-        combo1 = new FreeDecorator(combo1, drink);
+        combo1.add(new Item("Drink", 0));
 
         ComboItem combo2 = new ComboItem("Combo2");
         combo2.add(shawarma);
         combo2.add(drink);
-        combo2 = new DiscountDecorator(combo2, 40.0 / 9.0);
+        combo2.setDiscount(40.0 / 9.0);
 
         class Pair {
             private String x;
@@ -96,11 +96,13 @@ public class KhaidaiBistro {
                     } else if (tokens[0].equalsIgnoreCase("Free")) {
                         for (Pair entry : menu) {
                             if (entry.getString().equalsIgnoreCase(tokens[1])) {
-                                newCombo = new FreeDecorator(newCombo, entry.getValue());
+                                // newCombo = new FreeDecorator(newCombo, entry.getValue());
+                                newCombo.add(new Item(entry.getValue().getName(),0));
                             }
                         }
                     } else if (tokens[0].equalsIgnoreCase("Discount")) {
-                        newCombo = new DiscountDecorator(newCombo, Double.parseDouble(tokens[1]));
+                        // newCombo = new DiscountDecorator(newCombo, Double.parseDouble(tokens[1]));
+                        newCombo.setDiscount(Double.parseDouble(tokens[1]));
                     }
                 }
                 // System.out.println(newCombo.getComboItem());
