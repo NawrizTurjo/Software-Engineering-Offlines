@@ -94,7 +94,7 @@ public class KhaidaiBistro {
                     } else if (tokens[0].equalsIgnoreCase("Free")) {
                         for (Pair entry : menu) {
                             if (entry.getString().equalsIgnoreCase(tokens[1])) {
-                                newCombo.addFreeItem(newCombo);
+                                newCombo.addFreeItem(entry.getValue());
                             }
                         }
                     } else if (tokens[0].equalsIgnoreCase("Discount")) {
