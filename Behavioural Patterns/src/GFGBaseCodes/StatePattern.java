@@ -1,15 +1,4 @@
 package GFGBaseCodes;
-class VendingMachineContext {
-    private VendingMachineState state;
-
-    public void setState(VendingMachineState state) {
-        this.state = state;
-    }
-
-    public void request() {
-        state.handleRequest();
-    }
-}
 
 interface VendingMachineState {
     void handleRequest();
@@ -40,6 +29,18 @@ class OutOfStockState implements VendingMachineState {
     @Override
     public void handleRequest() {
         System.out.println("Out of stock state: Product unavailable. Please select another product.");
+    }
+}
+
+class VendingMachineContext {
+    private VendingMachineState state;
+
+    public void setState(VendingMachineState state) {
+        this.state = state;
+    }
+
+    public void request() {
+        state.handleRequest();
     }
 }
 
