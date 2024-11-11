@@ -51,7 +51,7 @@ class Seasonal extends PurchaseDecorator {
 
     @Override
     public double calculatePrice() {
-        return super.calculatePrice() - 100;
+        return Math.max(super.calculatePrice() - 100, 0);
     }
 }
 
