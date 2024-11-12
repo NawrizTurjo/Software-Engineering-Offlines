@@ -84,6 +84,6 @@ public class StatePtrn {
 // TLDR:
 // Step 1: Define the State interface
 // Step 2: Define Concrete State classes
-// Step 3: Create the Context class
+// Step 3: Create the Context class (has a reference to the current state)
 // Step 4: Client code : client does not use the setState
 // --------------------- (called by the concrete states)

@@ -48,6 +48,5 @@ public class Mediat {
 // TLDR:
 // Step 1: Define the Mediator interface
 // Step 2: Create the Concrete Mediator
-// Step 3: Define a Colleague class (must have a mediator reference to do
-// --------something)
+// Step 3: Define a Colleague class (must have a mediator reference)
 // Step 4: Client code

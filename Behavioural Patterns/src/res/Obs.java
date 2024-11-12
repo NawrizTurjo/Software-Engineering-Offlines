@@ -78,3 +78,4 @@ public class Obs {
 // Step-3: Implement Concrete Observers
 // Step-4: Client code : Subject er notifyObservers() method call korle, sob
 // ----------------------observer der update() method call hobe
+// List of observers and a for loop
