@@ -2,7 +2,7 @@ package GFGBaseCodes;
 
 // Handler Interface
 interface SupportHandler {
-    void handleRequest(Request request);
+    void handleRequest(Damage request);
 
     void setNextHandler(SupportHandler nextHandler);
 }
@@ -15,9 +15,9 @@ class Level1SupportHandler implements SupportHandler {
         this.nextHandler = nextHandler;
     }
 
-    public void handleRequest(Request request) {
-        if (request.getPriority() == Priority.BASIC) {
-            System.out.println("Level 1 Support handled the request.--> " + request.getPriority().name());
+    public void handleRequest(Damage request) {
+        if (request == Damage.BASIC) {
+            System.out.println("Level 1 Support handled the damage.--> Damage Category " + request.name());
         } else if (nextHandler != null) {
             nextHandler.handleRequest(request);
         }
@@ -31,9 +31,9 @@ class Level2SupportHandler implements SupportHandler {
         this.nextHandler = nextHandler;
     }
 
-    public void handleRequest(Request request) {
-        if (request.getPriority() == Priority.INTERMEDIATE) {
-            System.out.println("Level 2 Support handled the request.--> " + request.getPriority().name());
+    public void handleRequest(Damage request) {
+        if (request == Damage.INTERMEDIATE) {
+            System.out.println("Level 2 Support handled the damage.--> Damage Category " + request.name());
         } else if (nextHandler != null) {
             nextHandler.handleRequest(request);
         }
@@ -41,11 +41,11 @@ class Level2SupportHandler implements SupportHandler {
 }
 
 class Level3SupportHandler implements SupportHandler {
-    public void handleRequest(Request request) {
-        if (request.getPriority() == Priority.CRITICAL) {
-            System.out.println("Level 3 Support handled the request.--> " + request.getPriority().name());
+    public void handleRequest(Damage request) {
+        if (request == Damage.CRITICAL) {
+            System.out.println("Level 3 Support handled the damage.--> Damage Category " + request.name());
         } else {
-            System.out.println("Request cannot be handled. --> " + request.getPriority().name());
+            System.out.println("Damage cannot be handled. --> " + request.name());
         }
     }
 
@@ -54,27 +54,14 @@ class Level3SupportHandler implements SupportHandler {
     }
 }
 
-// Request Class
-class Request {
-    private Priority priority;
-
-    public Request(Priority priority) {
-        this.priority = priority;
-    }
-
-    public Priority getPriority() {
-        return priority;
-    }
-}
-
-// Priority Enum
-enum Priority {
+// Damage Enum
+enum Damage {
     BASIC, INTERMEDIATE, CRITICAL, SHOVON
 }
 
 // Main Class
 public class CORPattern {
-    public static void main(String[] args) {
+    public static SupportHandler getChainOfSupportHandlers() {
         SupportHandler level1Handler = new Level1SupportHandler();
         SupportHandler level2Handler = new Level2SupportHandler();
         SupportHandler level3Handler = new Level3SupportHandler();
@@ -82,14 +69,14 @@ public class CORPattern {
         level1Handler.setNextHandler(level2Handler);
         level2Handler.setNextHandler(level3Handler);
 
-        Request request1 = new Request(Priority.BASIC);
-        Request request2 = new Request(Priority.INTERMEDIATE);
-        Request request3 = new Request(Priority.CRITICAL);
-        Request request4 = new Request(Priority.SHOVON);
+        return level1Handler;
+    }
+    public static void main(String[] args) {
+        SupportHandler handlerChains = getChainOfSupportHandlers();
 
-        level1Handler.handleRequest(request1);
-        level1Handler.handleRequest(request2);
-        level1Handler.handleRequest(request3);
-        level1Handler.handleRequest(request4);
+        handlerChains.handleRequest(Damage.BASIC);
+        handlerChains.handleRequest(Damage.INTERMEDIATE);
+        handlerChains.handleRequest(Damage.CRITICAL);
+        handlerChains.handleRequest(Damage.SHOVON);
     }
 }
