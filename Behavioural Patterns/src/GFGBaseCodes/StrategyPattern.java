@@ -1,20 +1,4 @@
 package GFGBaseCodes;
-// SortingContext.java
-class SortingContext {
-	private SortingStrategy sortingStrategy;
-
-	public SortingContext(SortingStrategy sortingStrategy) {
-		this.sortingStrategy = sortingStrategy;
-	}
-
-	public void setSortingStrategy(SortingStrategy sortingStrategy) {
-		this.sortingStrategy = sortingStrategy;
-	}
-
-	public void performSort(int[] array) {
-		sortingStrategy.sort(array);
-	}
-}
 
 // SortingStrategy.java
 interface SortingStrategy {
@@ -51,6 +35,33 @@ class QuickSortStrategy implements SortingStrategy {
 	}
 }
 
+// InsertionSortStrategy.java
+class InsertionSortStrategy implements SortingStrategy {
+	@Override
+	public void sort(int[] array) {
+		// Implement Quick Sort algorithm
+		System.out.println("Sorting using Insertion Sort");
+		// Actual Quick Sort Logic here
+	}
+}
+
+// SortingContext.java
+class SortingContext {
+	private SortingStrategy sortingStrategy;
+
+	public SortingContext(SortingStrategy sortingStrategy) {
+		this.sortingStrategy = sortingStrategy;
+	}
+
+	public void setSortingStrategy(SortingStrategy sortingStrategy) {
+		this.sortingStrategy = sortingStrategy;
+	}
+
+	public void performSort(int[] array) {
+		sortingStrategy.sort(array);
+	}
+}
+
 // Client.java
 public class StrategyPattern {
 	public static void main(String[] args) {
@@ -68,5 +79,10 @@ public class StrategyPattern {
 		sortingContext.setSortingStrategy(new QuickSortStrategy());
 		int[] array3 = { 6, 1, 3, 9, 5 };
 		sortingContext.performSort(array3); // Output: Sorting using Quick Sort
+
+		// Change strategy to InsertionSortStrategy
+		sortingContext.setSortingStrategy(new InsertionSortStrategy());
+		int[] array4 = { 10, 6, 1, 3, 9, 5 };
+		sortingContext.performSort(array4); // Output: Sorting using Insertion Sort
 	}
 }

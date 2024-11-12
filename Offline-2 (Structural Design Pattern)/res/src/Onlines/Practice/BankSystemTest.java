@@ -11,6 +11,7 @@ class Account {
     }
 
     public boolean hasSufficientBalance(double amount) {
+        System.out.println("Checking balance: $" + balance + " of account number: " + accountNumber);
         return balance >= amount;
     }
 

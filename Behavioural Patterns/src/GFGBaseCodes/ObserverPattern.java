@@ -1,4 +1,5 @@
 package GFGBaseCodes;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,27 +14,27 @@ interface Subject {
 
     void removeObserver(Observer observer);
 
-    void notifyObservers();
+    // void notifyObservers();
 }
 
 // ConcreteSubject Class
 class WeatherStation implements Subject {
-    private List<Observer> observers = new ArrayList<>();
+    private List<Observer> subscribers = new ArrayList<>();
     private String weather;
 
     @Override
     public void addObserver(Observer observer) {
-        observers.add(observer);
+        subscribers.add(observer);
     }
 
     @Override
     public void removeObserver(Observer observer) {
-        observers.remove(observer);
+        subscribers.remove(observer);
     }
 
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
+    // @Override
+    private void notifyObservers() { // ! amar mote eta internal method howa uchit
+        for (Observer observer : subscribers) {
             observer.update(weather);
         }
     }

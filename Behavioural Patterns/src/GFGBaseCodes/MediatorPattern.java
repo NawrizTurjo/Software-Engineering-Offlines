@@ -1,5 +1,6 @@
 package GFGBaseCodes;
-// Colleague Interface
+
+// Colleague Interface --> Student
 interface Airplane {
 	void requestTakeoff();
 
@@ -32,7 +33,7 @@ class CommercialAirplane implements Airplane {
 	}
 }
 
-// Mediator Interface
+// Mediator Interface --> Teacher
 interface AirTrafficControlTower {
 	void requestTakeoff(Airplane airplane);
 

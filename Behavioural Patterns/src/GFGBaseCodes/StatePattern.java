@@ -1,9 +1,9 @@
 package GFGBaseCodes;
 
-interface VendingMachineState {
+interface VendingMachineState { // State interface
     void handleRequest();
 }
-
+// These are the different states of the vending machine
 class ReadyState implements VendingMachineState {
     @Override
     public void handleRequest() {
@@ -31,7 +31,7 @@ class OutOfStockState implements VendingMachineState {
         System.out.println("Out of stock state: Product unavailable. Please select another product.");
     }
 }
-
+// Context class : it will have a state object to delegate the request to the state object
 class VendingMachineContext {
     private VendingMachineState state;
 

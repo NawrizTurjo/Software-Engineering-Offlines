@@ -1,7 +1,9 @@
 package GFGBaseCodes;
+
 // Handler Interface
 interface SupportHandler {
     void handleRequest(Request request);
+
     void setNextHandler(SupportHandler nextHandler);
 }
 
@@ -15,7 +17,7 @@ class Level1SupportHandler implements SupportHandler {
 
     public void handleRequest(Request request) {
         if (request.getPriority() == Priority.BASIC) {
-            System.out.println("Level 1 Support handled the request.");
+            System.out.println("Level 1 Support handled the request.--> " + request.getPriority().name());
         } else if (nextHandler != null) {
             nextHandler.handleRequest(request);
         }
@@ -31,7 +33,7 @@ class Level2SupportHandler implements SupportHandler {
 
     public void handleRequest(Request request) {
         if (request.getPriority() == Priority.INTERMEDIATE) {
-            System.out.println("Level 2 Support handled the request.");
+            System.out.println("Level 2 Support handled the request.--> " + request.getPriority().name());
         } else if (nextHandler != null) {
             nextHandler.handleRequest(request);
         }
@@ -41,14 +43,14 @@ class Level2SupportHandler implements SupportHandler {
 class Level3SupportHandler implements SupportHandler {
     public void handleRequest(Request request) {
         if (request.getPriority() == Priority.CRITICAL) {
-            System.out.println("Level 3 Support handled the request.");
+            System.out.println("Level 3 Support handled the request.--> " + request.getPriority().name());
         } else {
-            System.out.println("Request cannot be handled.");
+            System.out.println("Request cannot be handled. --> " + request.getPriority().name());
         }
     }
 
     public void setNextHandler(SupportHandler nextHandler) {
-        // No next handler for Level 3
+        // No next handler for Level 3 as it is the last in the chain
     }
 }
 
@@ -67,7 +69,7 @@ class Request {
 
 // Priority Enum
 enum Priority {
-    BASIC, INTERMEDIATE, CRITICAL
+    BASIC, INTERMEDIATE, CRITICAL, SHOVON
 }
 
 // Main Class
@@ -83,9 +85,11 @@ public class CORPattern {
         Request request1 = new Request(Priority.BASIC);
         Request request2 = new Request(Priority.INTERMEDIATE);
         Request request3 = new Request(Priority.CRITICAL);
+        Request request4 = new Request(Priority.SHOVON);
 
         level1Handler.handleRequest(request1);
         level1Handler.handleRequest(request2);
         level1Handler.handleRequest(request3);
+        level1Handler.handleRequest(request4);
     }
 }
