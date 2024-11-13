@@ -2,7 +2,7 @@ package res;
 
 // Step 1: Define the Strategy interface
 interface PaymentStrategy {
-    void pay(int amount); //# ami ki korte chai
+    void pay(int amount); // # ami ki korte chai
 }
 
 // Step 2: Implement Concrete Strategy classes
@@ -52,7 +52,11 @@ class ShoppingCart {
     private PaymentStrategy paymentStrategy;
 
     // Sets the current payment strategy
-    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+    // public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+    // this.paymentStrategy = paymentStrategy;
+    // }
+
+    ShoppingCart(PaymentStrategy paymentStrategy) {
         this.paymentStrategy = paymentStrategy;
     }
 
@@ -68,18 +72,20 @@ class ShoppingCart {
 // Step 4: Client code
 public class Strat {
     public static void main(String[] args) {
-        ShoppingCart cart = new ShoppingCart();
+        ShoppingCart cart = new ShoppingCart(new CreditCardStrategy("1234-5678-9012-3456", "John Doe"));
 
         // Choose Credit Card payment
-        cart.setPaymentStrategy(new CreditCardStrategy("1234-5678-9012-3456", "John Doe"));
+        // cart.setPaymentStrategy());
         cart.checkout(100); // Output: Paid $100 using Credit Card.
 
         // Choose PayPal payment
-        cart.setPaymentStrategy(new PayPalStrategy("john@example.com"));
+        // cart.setPaymentStrategy(new PayPalStrategy("john@example.com"));
+        cart = new ShoppingCart(new PayPalStrategy("john@example.com"));
         cart.checkout(200); // Output: Paid $200 using PayPal.
 
         // Choose Bitcoin payment
-        cart.setPaymentStrategy(new BitcoinStrategy("1BitcoinWalletAddress"));
+        // cart.setPaymentStrategy(new BitcoinStrategy("1BitcoinWalletAddress"));
+        cart = new ShoppingCart(new BitcoinStrategy("1BitcoinWalletAddress"));
         cart.checkout(300); // Output: Paid $300 using Bitcoin.
     }
 }

@@ -2,14 +2,12 @@ package res;
 
 // enum for log levels
 enum LogLevel {
-    INFO, DEBUG, ERROR, SHOVON
+    ERROR, DEBUG, INFO, SHOVON
 }
 
 // Step 1: Define the Handler interface
 interface Logger {
-    void setNextLogger(Logger nextLogger);
-
-    void handleRequest(Requestt request);
+    Boolean handleRequest(Requestt request);
 }
 
 // Step 2: Create Concrete Handlers
@@ -17,24 +15,23 @@ class InfoLogger implements Logger {
     private LogLevel level;
     private Logger nextLogger;
 
-    public InfoLogger(LogLevel level) {
-        this.level = level;
-    }
-
-    @Override
-    public void setNextLogger(Logger nextLogger) {
+    public InfoLogger(Logger nextLogger) {
+        this.level = LogLevel.INFO;
         this.nextLogger = nextLogger;
     }
 
     @Override
-    public void handleRequest(Requestt request) {
+    public Boolean handleRequest(Requestt request) {
         if (this.level == request.level) {
             System.out.println(request.level.name() + ": " + request.message);
+            return true;
         } else {
             if (nextLogger != null)
-                nextLogger.handleRequest(request);
-            else
+                return nextLogger.handleRequest(request);
+            else {
                 System.out.println(request.level.name() + ": No handler found for this request.");
+                return false;
+            }
         }
     }
 }
@@ -43,24 +40,23 @@ class DebugLogger implements Logger {
     private LogLevel level;
     private Logger nextLogger;
 
-    public DebugLogger(LogLevel level) {
-        this.level = level;
-    }
-
-    @Override
-    public void setNextLogger(Logger nextLogger) {
+    public DebugLogger(Logger nextLogger) {
+        this.level = LogLevel.DEBUG;
         this.nextLogger = nextLogger;
     }
 
     @Override
-    public void handleRequest(Requestt request) {
+    public Boolean handleRequest(Requestt request) {
         if (this.level == request.level) {
             System.out.println(request.level.name() + ": " + request.message);
+            return true;
         } else {
             if (nextLogger != null)
-                nextLogger.handleRequest(request);
-            else
+                return nextLogger.handleRequest(request);
+            else {
                 System.out.println(request.level.name() + ": No handler found for this request.");
+                return false;
+            }
         }
     }
 }
@@ -69,24 +65,23 @@ class ErrorLogger implements Logger {
     private LogLevel level;
     private Logger nextLogger;
 
-    public ErrorLogger(LogLevel level) {
-        this.level = level;
-    }
-
-    @Override
-    public void setNextLogger(Logger nextLogger) {
+    public ErrorLogger(Logger nextLogger) {
+        this.level = LogLevel.ERROR;
         this.nextLogger = nextLogger;
     }
 
     @Override
-    public void handleRequest(Requestt request) {
-        if (this.level == request.level) {
+    public Boolean handleRequest(Requestt request) {
+        if (this.level.compareTo(request.level) <= 0) {
             System.out.println(request.level.name() + ": " + request.message);
+            return true;
         } else {
             if (nextLogger != null)
-                nextLogger.handleRequest(request);
-            else
+                return nextLogger.handleRequest(request);
+            else {
                 System.out.println(request.level.name() + ": No handler found for this request.");
+                return false;
+            }
         }
     }
 }
@@ -105,13 +100,9 @@ class Requestt {
 // Step 3: Set up the Chain of Responsibility
 public class COR {
     private static Logger createChain() {
-        Logger errorLogger = new ErrorLogger(LogLevel.ERROR);
-        Logger debugLogger = new DebugLogger(LogLevel.DEBUG);
-        Logger infoLogger = new InfoLogger(LogLevel.INFO);
-
-        errorLogger.setNextLogger(debugLogger);
-        debugLogger.setNextLogger(infoLogger);
-
+        Logger infoLogger = new InfoLogger(null);
+        Logger debugLogger = new DebugLogger(infoLogger);
+        Logger errorLogger = new ErrorLogger(debugLogger);
         return errorLogger;
     }
 
@@ -121,11 +112,11 @@ public class COR {
         loggerChain.handleRequest(new Requestt(LogLevel.INFO, "This is an info message."));
         loggerChain.handleRequest(new Requestt(LogLevel.DEBUG, "This is a debug message."));
         loggerChain.handleRequest(new Requestt(LogLevel.ERROR, "This is an error message."));
-        loggerChain.handleRequest(new Requestt(LogLevel.SHOVON, "This is a shovon message."));
+        loggerChain.handleRequest(new Requestt(LogLevel.SHOVON, "This is a NOTFOUND message."));
     }
 }
 
 // TLDR:
-// 1. Handler Interface (setNextMethod, handleRequest)
+// 1. Handler Interface (handleRequest)
 // 2. Concrete Handlers
 // 3. Client Code : create chain of handlers and pass the request
