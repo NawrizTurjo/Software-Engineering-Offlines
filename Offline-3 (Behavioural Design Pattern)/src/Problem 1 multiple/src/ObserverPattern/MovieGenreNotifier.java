@@ -20,10 +20,7 @@ public class MovieGenreNotifier {
 
     public void subscribe(User user, Genre genre) {
         genreSubscribers.computeIfAbsent(genre, g -> new HashSet<>()).add(user);
-        // if (!user.getNotifiers().contains(this)) {
-        //     user.addNotifier(this);
-        // }
-        if(user.getNotifiers() == null) {
+        if (!user.getNotifiers().contains(this)) {
             user.addNotifier(this);
         }
     }
@@ -39,10 +36,7 @@ public class MovieGenreNotifier {
         for (Genre genre : user.getFavoriteGenres()) {
             unsubscribe(user, genre);
         }
-        // if (user.getNotifiers().contains(this)) {
-        //     user.removeNotifier(this);
-        // }
-        if(user.getNotifiers() != null) {
+        if (user.getNotifiers().contains(this)) {
             user.removeNotifier(this);
         }
     }

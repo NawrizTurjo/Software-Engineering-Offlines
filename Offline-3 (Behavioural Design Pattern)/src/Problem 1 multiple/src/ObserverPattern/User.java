@@ -8,7 +8,7 @@ import java.util.Set;
 public class User implements MovieObserver {
     private String name;
     private Set<Genre> favoriteGenres = new HashSet<>();
-    private MovieGenreNotifier notifiers;
+    private List<MovieGenreNotifier> notifiers = new ArrayList<>();
 
     public User(String name) {
         this.name = name;
@@ -19,43 +19,45 @@ public class User implements MovieObserver {
     }
 
     public void addFavoriteGenre(Genre genre) {
-        if (favoriteGenres.contains(genre)) {
+        if(favoriteGenres.contains(genre)) {
             return;
         }
-        if (favoriteGenres.add(genre) && notifiers != null) {
-            notifiers.subscribe(this, genre);
+        if (favoriteGenres.add(genre)) {
+            for (MovieGenreNotifier notifier : notifiers) {
+                notifier.subscribe(this, genre);
+            }
         }
     }
 
-    public MovieGenreNotifier getNotifiers() {
-        return this.notifiers;
+    public List<MovieGenreNotifier> getNotifiers() {
+        return notifiers;
     }
 
     public void addNotifier(MovieGenreNotifier notifier) {
-        if (notifiers != null) {
+        if (notifiers.contains(notifier)) {
             return;
         }
-        notifiers = notifier;
+        notifiers.add(notifier);
         for (Genre genre : favoriteGenres) {
             notifier.subscribe(this, genre);
         }
     }
 
     public void removeNotifier(MovieGenreNotifier notifier) {
-        if (notifiers == null) {
+        if (notifiers.isEmpty()) {
             return;
         }
-        notifiers = null;
+        notifiers.remove(notifier);
     }
 
     public void removeFavoriteGenre(Genre genre) {
         favoriteGenres.remove(genre);
-        if (notifiers == null) {
+        if (notifiers.isEmpty()) {
             return;
         }
-        // for (MovieGenreNotifier notifier : notifiers) {
-        notifiers.unsubscribe(this, genre);
-        // }
+        for (MovieGenreNotifier notifier : notifiers) {
+            notifier.unsubscribe(this, genre);
+        }
     }
 
     public Set<Genre> getFavoriteGenres() {
@@ -64,10 +66,7 @@ public class User implements MovieObserver {
 
     @Override
     public void notify(String movieName, Genre genre) {
-        // System.out.println("Notification to " + name + ": New " + genre + " movie
-        // uploaded: " + movieName);
-        System.out.println("Notification to " + name + ": New " + genre + " movie uploaded: " + movieName
-                + " (Thread ID: " + Thread.currentThread().threadId() + ")");
+        System.out.println("Notification to " + name + ": New " + genre + " movie uploaded: " + movieName);
     }
 
     @Override

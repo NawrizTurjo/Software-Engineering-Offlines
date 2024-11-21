@@ -1,6 +1,5 @@
 package Client;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -8,14 +7,13 @@ import java.util.Scanner;
 import ObserverPattern.*;
 
 public class DesiFlix {
-    // public static void printNotifierNames(Map<String, MovieGenreNotifier>
-    // notifiers) {
-    // System.out.print("Notifiers: ");
-    // for (String notifierName : notifiers.keySet()) {
-    // System.out.print(notifierName + " ");
-    // }
-    // System.out.println();
-    // }
+    public static void printNotifierNames(Map<String, MovieGenreNotifier> notifiers) {
+        System.out.print("Notifiers: ");
+        for (String notifierName : notifiers.keySet()) {
+            System.out.print(notifierName + " ");
+        }
+        System.out.println();
+    }
 
     public static void printUserNames(Map<String, User> users) {
         System.out.print("Users: ");
@@ -35,8 +33,12 @@ public class DesiFlix {
     public static void main(String[] args) {
         // Create movie genre notifier
         MovieGenreNotifier notifier = new MovieGenreNotifier();
+        MovieGenreNotifier notifier2 = new MovieGenreNotifier();
 
         Map<String, User> users = new HashMap<>();
+        Map<String, MovieGenreNotifier> notifiers = new HashMap<>();
+        notifiers.put("netflix", notifier);
+        notifiers.put("youtube", notifier2);
         // Create users
         // User user1 = new User("Alice");
         // User user2 = new User("Bob");
@@ -73,52 +75,34 @@ public class DesiFlix {
 
         Scanner sc = new Scanner(System.in);
         while (true) {
-            // printNotifierNames(notifiers);
-            System.out.print("Enter command (user, movie, exit): ");
+            printNotifierNames(notifiers);
+            System.out.print("Enter command (notifier, user, movie, exit): ");
             String command = sc.nextLine();
-            if (command.equalsIgnoreCase("user")) {
+            if (command.equalsIgnoreCase("notifier")) {
+                System.out.print("Enter notifier name: ");
+                String notifierName = sc.nextLine();
+                MovieGenreNotifier newNotifier = new MovieGenreNotifier();
+                notifiers.put(notifierName.toLowerCase(), newNotifier);
+            } else if (command.equalsIgnoreCase("user")) {
                 System.out.println("Updating User information...");
                 System.out.print("Enter user name: ");
                 String userName = sc.nextLine();
                 User user = users.get(userName);
                 if (user == null) {
-                    System.out.print("User not found. Creating new user...");
                     user = new User(userName);
                     users.put(userName, user);
                 }
-                System.out.println("User: " + user);
-                System.out.print("Add/Remove: ");
-                String action = sc.nextLine();
-                if(!action.equalsIgnoreCase("add") && !action.equalsIgnoreCase("remove")) {
-                    System.out.println("Invalid action. Please enter add or remove.");
-                    continue;
-                }
                 System.out.print("Enter genre: ");
-                String genreStr = sc.nextLine();
-                String genres = Arrays.toString(Genre.values());
-                if (!genres.contains(genreStr)) {
-                    System.out.println("Invalid genre. Available genres are: " + genres);
+                Genre genre = Genre.valueOf(sc.nextLine().toUpperCase());
+                user.addFavoriteGenre(genre);
+                System.out.print("Enter notifier name: ");
+                String notifierName = sc.nextLine();
+                MovieGenreNotifier noti = notifiers.get(notifierName.toLowerCase());
+                if (noti == null) {
+                    System.out.println("Invalid notifier");
                     continue;
                 }
-                Genre genre = Genre.valueOf(genreStr.toUpperCase());
-
-                if (genre == null) {
-                    System.out.print("Invalid genre available genres are:" + Genre.values());
-                    continue;
-                }
-                if (action.equalsIgnoreCase("add")) {
-                    user.addFavoriteGenre(genre);
-                    notifier.subscribe(user);
-                } else if (action.equalsIgnoreCase("remove")) {
-                    user.removeFavoriteGenre(genre);
-                    notifier.unsubscribe(user, genre);
-                } else {
-                    System.out.println("Invalid action");
-                }
-                // System.out.print("Enter genre: ");
-                // Genre genre = Genre.valueOf(sc.nextLine().toUpperCase());
-                // user.addFavoriteGenre(genre);
-                // notifier.subscribe(user);
+                noti.subscribe(user);
             } else if (command.equalsIgnoreCase("movie")) {
                 System.out.print("Enter movie name: ");
                 String movieName = sc.nextLine();
@@ -128,7 +112,14 @@ public class DesiFlix {
                     System.out.print("Invalid genre available genres are: Thriller, Comedy, Horror");
                     continue;
                 }
-                notifier.uploadMovie(movieName, genre);
+                System.out.print("Enter notifier name: ");
+                String notifierName = sc.nextLine();
+                MovieGenreNotifier noti = notifiers.get(notifierName.toLowerCase());
+                if (noti == null) {
+                    System.out.println("Invalid notifier");
+                    continue;
+                }
+                noti.uploadMovie(movieName, genre);
 
             } else if (command.equalsIgnoreCase("exit")) {
                 break;
