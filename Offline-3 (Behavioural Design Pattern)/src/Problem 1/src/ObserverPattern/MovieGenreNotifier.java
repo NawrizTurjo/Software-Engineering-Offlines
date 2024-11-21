@@ -8,7 +8,8 @@ import java.util.concurrent.*;
 
 public class MovieGenreNotifier implements iMovieGenreNotifier {
     private Map<Genre, Set<MovieObserver>> genreSubscribers = new HashMap<>();
-    private ExecutorService executor = Executors.newCachedThreadPool();
+    // private ExecutorService executor = Executors.newCachedThreadPool();
+    private ForkJoinPool executor = ForkJoinPool.commonPool();
 
     public void subscribe(MovieObserver user) {
         for (Genre genre : user.getFavoriteGenres()) {
@@ -21,9 +22,9 @@ public class MovieGenreNotifier implements iMovieGenreNotifier {
     public void subscribe(MovieObserver user, Genre genre) {
         genreSubscribers.computeIfAbsent(genre, g -> new HashSet<>()).add(user);
         // if (!user.getNotifiers().contains(this)) {
-        //     user.addNotifier(this);
+        // user.addNotifier(this);
         // }
-        if(user.getNotifiers() == null) {
+        if (user.getNotifiers() == null) {
             user.addNotifier(this);
         }
     }
@@ -40,9 +41,9 @@ public class MovieGenreNotifier implements iMovieGenreNotifier {
             unsubscribe(user, genre);
         }
         // if (user.getNotifiers().contains(this)) {
-        //     user.removeNotifier(this);
+        // user.removeNotifier(this);
         // }
-        if(user.getNotifiers() != null) {
+        if (user.getNotifiers() != null) {
             user.removeNotifier(this);
         }
     }
@@ -55,6 +56,7 @@ public class MovieGenreNotifier implements iMovieGenreNotifier {
             for (MovieObserver user : subscribers) {
                 if (user.getFavoriteGenres().contains(genre)) {
                     executor.submit(() -> user.notify(movieName, genre));
+                    // new Thread(() -> user.notify(movieName, genre)).start();
                 }
             }
         }

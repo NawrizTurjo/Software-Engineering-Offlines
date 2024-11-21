@@ -66,6 +66,14 @@ public class User implements MovieObserver {
         // uploaded: " + movieName);
         System.out.println("Notification to " + name + ": New " + genre + " movie uploaded: " + movieName
                 + " (Thread ID: " + Thread.currentThread().threadId() + ")");
+        // try {
+        // Thread.sleep(1000);
+        // System.out.println("Notification to " + name + ": New " + genre + " movie
+        // uploaded: " + movieName
+        // + " (Thread ID: " + Thread.currentThread().threadId() + ")");
+        // } catch (InterruptedException e) {
+        // System.out.println("Thread interrupted");
+        // }
     }
 
     @Override
@@ -73,6 +81,10 @@ public class User implements MovieObserver {
         StringBuilder sb = new StringBuilder();
         sb.append("User: ").append(name).append("\n");
         sb.append("Favorite Genres: ");
+        if (favoriteGenres.isEmpty()) {
+            sb.append("User hasn't selected any favorite genres.");
+            return sb.toString();
+        }
         for (Genre genre : favoriteGenres) {
             sb.append(genre).append(" ");
         }

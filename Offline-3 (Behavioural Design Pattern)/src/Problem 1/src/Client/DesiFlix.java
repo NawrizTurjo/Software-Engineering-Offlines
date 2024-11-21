@@ -18,18 +18,23 @@ public class DesiFlix {
     // }
 
     public static void printUserNames(Map<String, MovieObserver> users) {
-        System.out.print("Users: ");
+        System.out.println("-------------------Users-------------------");
         for (String userName : users.keySet()) {
             System.out.println(users.get(userName));
         }
+        System.out.println("-------------------------------------------");
     }
 
     public static void printGenres() {
-        System.out.print("Genres: ");
-        for (Genre genre : Genre.values()) {
-            System.out.print(genre + " ");
-        }
+        System.out.print("Available Genres: " + Arrays.toString(Genre.values()));
         System.out.println();
+    }
+
+    public static void printMovies(Map<Genre, MovieGenres> movieLibrary) {
+        System.out.println("Movie Library: ");
+        for (Genre genre : movieLibrary.keySet()) {
+            System.out.println(movieLibrary.get(genre));
+        }
     }
 
     public static void main(String[] args) {
@@ -37,6 +42,11 @@ public class DesiFlix {
         iMovieGenreNotifier notifier = new MovieGenreNotifier();
 
         Map<String, MovieObserver> users = new HashMap<>();
+        Map<Genre, MovieGenres> movieLibrary = new HashMap<>();
+
+        // for (Genre genre : Genre.values()) {
+        // movieLibrary.put(genre, new MovieGenres(genre));
+        // }
         // Create users
         MovieObserver user1 = new User("Alice");
         MovieObserver user2 = new User("Bob");
@@ -56,9 +66,7 @@ public class DesiFlix {
         // Subscribe users to their preferred genres
         notifier.subscribe(user1);
         user1.addFavoriteGenre(Genre.COMEDY);
-        notifier.subscribe(user1);
 
-        notifier.subscribe(user2);
         notifier.subscribe(user2);
 
         notifier.subscribe(user3);
@@ -68,13 +76,16 @@ public class DesiFlix {
         System.out.println(user3);
         // Upload movies
         notifier.uploadMovie("Haunted House", Genre.HORROR);
+        movieLibrary.computeIfAbsent(Genre.HORROR, g -> new MovieGenres(g)).addMovie("Haunted House");
         notifier.uploadMovie("Laugh Out Loud", Genre.COMEDY);
+        movieLibrary.computeIfAbsent(Genre.COMEDY, g -> new MovieGenres(g)).addMovie("Laugh Out Loud");
         notifier.uploadMovie("The Detective", Genre.THRILLER);
+        movieLibrary.computeIfAbsent(Genre.THRILLER, g -> new MovieGenres(g)).addMovie("The Detective");
 
         Scanner sc = new Scanner(System.in);
         while (true) {
             // printNotifierNames(notifiers);
-            System.out.print("Enter command (user, movie, exit): ");
+            System.out.print("Enter command (user, movie,showLibrary, exit): ");
             String command = sc.nextLine();
             if (command.equalsIgnoreCase("user")) {
                 System.out.println("Updating User information...");
@@ -131,6 +142,12 @@ public class DesiFlix {
                 }
                 Genre genre = Genre.valueOf(genreStr.toUpperCase());
                 notifier.uploadMovie(movieName, genre);
+                movieLibrary.computeIfAbsent(genre, g -> new MovieGenres(g)).addMovie(movieName);
+
+            } else if (command.equalsIgnoreCase("showlibrary")) {
+                printGenres();
+                printUserNames(users);
+                printMovies(movieLibrary);
 
             } else if (command.equalsIgnoreCase("exit")) {
                 break;
