@@ -6,11 +6,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.*;
 
-public class MovieGenreNotifier {
-    private Map<Genre, Set<User>> genreSubscribers = new HashMap<>();
+public class MovieGenreNotifier implements iMovieGenreNotifier {
+    private Map<Genre, Set<MovieObserver>> genreSubscribers = new HashMap<>();
     private ExecutorService executor = Executors.newCachedThreadPool();
 
-    public void subscribe(User user) {
+    public void subscribe(MovieObserver user) {
         for (Genre genre : user.getFavoriteGenres()) {
             subscribe(user, genre); // Use the updated single-genre subscription method
             // System.out.println("Subscribers for " + genre + ": " +
@@ -18,7 +18,7 @@ public class MovieGenreNotifier {
         }
     }
 
-    public void subscribe(User user, Genre genre) {
+    public void subscribe(MovieObserver user, Genre genre) {
         genreSubscribers.computeIfAbsent(genre, g -> new HashSet<>()).add(user);
         // if (!user.getNotifiers().contains(this)) {
         //     user.addNotifier(this);
@@ -28,14 +28,14 @@ public class MovieGenreNotifier {
         }
     }
 
-    public void unsubscribe(User user, Genre genre) {
-        Set<User> subscribers = genreSubscribers.get(genre);
+    public void unsubscribe(MovieObserver user, Genre genre) {
+        Set<MovieObserver> subscribers = genreSubscribers.get(genre);
         if (subscribers != null) {
             subscribers.remove(user);
         }
     }
 
-    public void unsubscribe(User user) {
+    public void unsubscribe(MovieObserver user) {
         for (Genre genre : user.getFavoriteGenres()) {
             unsubscribe(user, genre);
         }
@@ -49,10 +49,10 @@ public class MovieGenreNotifier {
 
     public void uploadMovie(String movieName, Genre genre) {
         System.out.println("Uploading new " + genre + " movie: " + movieName);
-        Set<User> subscribers = genreSubscribers.get(genre);
+        Set<MovieObserver> subscribers = genreSubscribers.get(genre);
 
         if (subscribers != null) {
-            for (User user : subscribers) {
+            for (MovieObserver user : subscribers) {
                 if (user.getFavoriteGenres().contains(genre)) {
                     executor.submit(() -> user.notify(movieName, genre));
                 }

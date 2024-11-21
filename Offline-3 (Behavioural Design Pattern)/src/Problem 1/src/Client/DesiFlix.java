@@ -17,7 +17,7 @@ public class DesiFlix {
     // System.out.println();
     // }
 
-    public static void printUserNames(Map<String, User> users) {
+    public static void printUserNames(Map<String, MovieObserver> users) {
         System.out.print("Users: ");
         for (String userName : users.keySet()) {
             System.out.println(users.get(userName));
@@ -34,13 +34,13 @@ public class DesiFlix {
 
     public static void main(String[] args) {
         // Create movie genre notifier
-        MovieGenreNotifier notifier = new MovieGenreNotifier();
+        iMovieGenreNotifier notifier = new MovieGenreNotifier();
 
-        Map<String, User> users = new HashMap<>();
+        Map<String, MovieObserver> users = new HashMap<>();
         // Create users
-        User user1 = new User("Alice");
-        User user2 = new User("Bob");
-        User user3 = new User("Charlie");
+        MovieObserver user1 = new User("Alice");
+        MovieObserver user2 = new User("Bob");
+        MovieObserver user3 = new User("Charlie");
         users.put(user1.getName(), user1);
         users.put(user2.getName(), user2);
         users.put(user3.getName(), user3);
@@ -80,7 +80,7 @@ public class DesiFlix {
                 System.out.println("Updating User information...");
                 System.out.print("Enter user name: ");
                 String userName = sc.nextLine();
-                User user = users.get(userName);
+                MovieObserver user = users.get(userName);
                 if (user == null) {
                     System.out.print("User not found. Creating new user...");
                     user = new User(userName);
