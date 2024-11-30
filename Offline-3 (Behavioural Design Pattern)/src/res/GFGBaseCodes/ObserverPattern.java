@@ -1,4 +1,4 @@
-package res.GFGBaseCodes;
+package GFGBaseCodes;
 
 import java.util.ArrayList;
 import java.util.List;

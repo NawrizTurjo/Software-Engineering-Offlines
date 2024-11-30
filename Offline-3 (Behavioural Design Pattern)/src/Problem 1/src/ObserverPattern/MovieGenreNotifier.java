@@ -8,8 +8,8 @@ import java.util.concurrent.*;
 
 public class MovieGenreNotifier implements iMovieGenreNotifier {
     private Map<Genre, Set<MovieObserver>> genreSubscribers = new HashMap<>();
-    // private ExecutorService executor = Executors.newCachedThreadPool();
-    private ForkJoinPool executor = ForkJoinPool.commonPool();
+    private ExecutorService executor = Executors.newCachedThreadPool();
+    // private ForkJoinPool executor = ForkJoinPool.commonPool();
 
     public void subscribe(MovieObserver user) {
         for (Genre genre : user.getFavoriteGenres()) {

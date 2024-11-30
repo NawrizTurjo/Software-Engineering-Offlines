@@ -1,4 +1,4 @@
-package res.GFGBaseCodes;
+package GFGBaseCodes;
 
 // Colleague Interface --> Student
 interface Airplane {

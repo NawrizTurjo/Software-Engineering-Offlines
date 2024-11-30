@@ -1,4 +1,4 @@
-package res;
+
 
 // enum for log levels
 enum LogLevel {

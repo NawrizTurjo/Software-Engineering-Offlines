@@ -1,4 +1,4 @@
-package res;
+
 
 interface Mediator {
     void notify(Component sender, String event);

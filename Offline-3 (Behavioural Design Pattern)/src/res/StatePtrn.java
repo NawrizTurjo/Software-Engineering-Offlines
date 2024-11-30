@@ -1,4 +1,4 @@
-package res;
+
 
 // Step 1: Define the State interface
 interface DocumentState {

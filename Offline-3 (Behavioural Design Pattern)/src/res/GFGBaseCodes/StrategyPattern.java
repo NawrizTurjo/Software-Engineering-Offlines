@@ -1,4 +1,4 @@
-package res.GFGBaseCodes;
+package GFGBaseCodes;
 
 // SortingStrategy.java
 interface SortingStrategy {

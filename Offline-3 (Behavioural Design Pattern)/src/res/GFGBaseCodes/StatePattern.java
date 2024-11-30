@@ -1,4 +1,4 @@
-package res.GFGBaseCodes;
+package GFGBaseCodes;
 
 interface VendingMachineState { // State interface
     void handleRequest();
