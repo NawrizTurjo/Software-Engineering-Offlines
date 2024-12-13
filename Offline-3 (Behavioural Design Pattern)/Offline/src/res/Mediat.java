@@ -1,5 +1,4 @@
 
-
 // Step 1: Define the Mediator interface
 interface ChatMediator {
     void showMessage(User user, String message);
@@ -13,18 +12,29 @@ class ChatRoom implements ChatMediator {
     }
 }
 
+abstract class UserAbstract {
+    protected String name;
+    protected ChatMediator chatMediator; // # Must have a reference to the mediator
+
+    public UserAbstract(String name, ChatMediator med) {
+        this.chatMediator = med;
+        this.name = name;
+    }
+
+    public abstract void sendMessage(String msg);
+
+    // public abstract void receive(String msg);
+}
+
 // Step 3: Define a Colleague class
-class User {
-    private String name;
-    private ChatMediator chatMediator; // # Must have a reference to the mediator
+class User extends UserAbstract {
 
     public User(String name, ChatMediator chatMediator) {
-        this.name = name;
-        this.chatMediator = chatMediator;
+        super(name, chatMediator);
     }
 
     public String getName() {
-        return name;
+        return super.name;
     }
 
     public void sendMessage(String message) {
@@ -37,8 +47,8 @@ public class Mediat {
     public static void main(String[] args) {
         ChatMediator chatRoom = new ChatRoom();
 
-        User user1 = new User("Alice", chatRoom);
-        User user2 = new User("Bob", chatRoom);
+        UserAbstract user1 = new User("Alice", chatRoom);
+        UserAbstract user2 = new User("Bob", chatRoom);
 
         user1.sendMessage("Hello, Bob!");
         user2.sendMessage("Hey, Alice!");

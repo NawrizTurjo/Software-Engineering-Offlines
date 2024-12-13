@@ -1,5 +1,4 @@
 
-
 // enum for log levels
 enum LogLevel {
     ERROR, DEBUG, INFO, SHOVON

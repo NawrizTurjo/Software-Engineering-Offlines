@@ -98,7 +98,7 @@ class ComplexSolutionHandler implements QuadInterface {
         double d = request.b * request.b - 4 * request.a * request.c;
         if (d < 0) {
             double real = -request.b / (2 * request.a);
-            System.out.println("b=" + request.b);
+            // System.out.println("b=" + request.b);
             double imaginary = Math.sqrt(-d) / (2 * request.a);
             System.out.println("Complex solutions: x1 = " + real + " + " + imaginary + "i, x2 = " + real + " - "
                     + imaginary + "i");
@@ -123,5 +123,15 @@ public class QuadCOR {
         QuadInterface chain = getChain();
         Numbers request = new Numbers(0, 0, 0);
         chain.handleRequest(request);
+        Numbers request1 = new Numbers(0, 0, 1);
+        chain.handleRequest(request1);
+        Numbers request2 = new Numbers(0, 1, 1);
+        chain.handleRequest(request2);
+        Numbers request3 = new Numbers(1, 2, 1);
+        chain.handleRequest(request3);
+        Numbers request4 = new Numbers(1, 2, 1);
+        chain.handleRequest(request4);
+        Numbers request5 = new Numbers(1, 1, 1);
+        chain.handleRequest(request5);
     }
 }

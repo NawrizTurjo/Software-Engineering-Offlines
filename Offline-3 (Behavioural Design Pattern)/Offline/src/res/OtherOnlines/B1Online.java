@@ -9,11 +9,11 @@ class RedState implements TrafficLightState {
     public void changeState(TrafficLight light) {
         System.out.println("Red Light");
         try {
-            Thread.sleep(5000); // Wait for 1 seconds
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        light.setState(new YellowState());
+        light.setState(new YellowState(true));
     }
 }
 
@@ -22,24 +22,35 @@ class GreenState implements TrafficLightState {
     public void changeState(TrafficLight light) {
         System.out.println("Green Light");
         try {
-            Thread.sleep(10000); // Wait for 1 seconds
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        light.setState(new RedState());
+        light.setState(new YellowState(false));
     }
 }
 
 class YellowState implements TrafficLightState {
+    private boolean isFromRed;
+
+    public YellowState(boolean boolValue) {
+        isFromRed = boolValue;
+    }
+
     @Override
     public void changeState(TrafficLight light) {
         System.out.println("Yellow Light");
         try {
-            Thread.sleep(2000); // Wait for 1 seconds
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        light.setState(new GreenState());
+        // light.setState(new GreenState());
+        if (isFromRed) {
+            light.setState(new GreenState());
+        } else {
+            light.setState(new RedState());
+        }
     }
 }
 
