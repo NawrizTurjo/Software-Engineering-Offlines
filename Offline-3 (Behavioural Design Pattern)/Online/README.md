@@ -1,18 +1,19 @@
-## Getting Started
+# Online 3
+### Time: 25 minutes
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-## Folder Structure
+You are tasked with creating a **notification** system for a banking platform that supports multiple
+mediums such as *email*, *SMS*, and *mobile app notifications*. This system must allow customers to
+**choose their preferred notification channel** for receiving alerts, such as *transaction updates*
+(incoming/outgoing), *low balance warnings*, and *promotional offers*.
 
-The workspace contains two folders by default, where:
+Customers should have the ***flexibility to switch their preferred notification channel dynamically***
+without impacting the underlying logic that processes and dispatches these notifications. The
+system should be designed with extensibility in mind, making it easy to integrate new channels,
+such as WhatsApp, voice calls, or push notifications, without requiring changes to the existing
+codebase.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Each notification channel *must handle its own specific formatting and sending logic
+independently*, ensuring a clear separation of responsibilities. Despite the diversity of channels,
+all notifications must maintain a consistent structure and content to provide a uniform experience
+across dif
