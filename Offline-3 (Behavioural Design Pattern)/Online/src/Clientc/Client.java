@@ -12,21 +12,17 @@ public class Client {
         iStrategyNotification mobileAppNotification = new MobileAppNotification();
         iStrategyNotification smsNotification = new SMSNotification();
 
-        
-        
         ContextStrategy contextStrategy = new ContextStrategy(new EmailNotification());
         contextStrategy.getNotification("Hello");
 
         contextStrategy.changeStrategy(smsNotification);
         contextStrategy.getNotification("Hello");
-        
+
         contextStrategy.changeStrategy(mobileAppNotification);
         contextStrategy.getTransactionUpdate("Hello");
 
         contextStrategy.changeStrategy(emailNotification);
         contextStrategy.getTransactionUpdate("Hello");
-        
-
 
     }
 }

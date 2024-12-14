@@ -1,5 +1,4 @@
 
-
 class Numbers {
     public double a, b, c;
 

@@ -45,7 +45,7 @@ class Level3SupportHandler implements SupportHandler {
         if (request == Damage.CRITICAL) {
             System.out.println("Level 3 Support handled the damage.--> Damage Category " + request.name());
         } else {
-            System.out.println("Damage cannot be handled. --> " + request.name());
+            System.out.println("Damage cannot be handled.--> Damage Category " + request.name());
         }
     }
 
@@ -71,6 +71,7 @@ public class CORPattern {
 
         return level1Handler;
     }
+
     public static void main(String[] args) {
         SupportHandler handlerChains = getChainOfSupportHandlers();
 

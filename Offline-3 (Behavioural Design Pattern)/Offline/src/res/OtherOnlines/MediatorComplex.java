@@ -43,6 +43,7 @@ abstract class SmartDevice {
     public SmartDevice(String name, SmartHub hub) {
         this.name = name;
         this.smartHub = hub;
+        hub.registerDevice(this);
     }
 
     public void sendUpdate(String s) {
@@ -125,9 +126,9 @@ public class MediatorComplex {
         SmartDevice doorLock = new SmartDoorLock("Main Door Lock", hub);
 
         // Devices register themselves with the hub
-        hub.registerDevice(light);
-        hub.registerDevice(thermostat);
-        hub.registerDevice(doorLock);
+        // hub.registerDevice(light);
+        // hub.registerDevice(thermostat);
+        // hub.registerDevice(doorLock);
 
         // Simulate device interactions
         doorLock.sendUpdate("locked"); // Lock the door

@@ -60,7 +60,7 @@ class DebugLogger implements Logger {
     }
 }
 
-class ErrorLogger implements Logger {
+class ErrorLogger implements Logger { //# Handles all other requests
     private LogLevel level;
     private Logger nextLogger;
 
