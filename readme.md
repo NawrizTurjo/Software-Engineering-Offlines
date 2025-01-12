@@ -58,8 +58,8 @@ The repository is structured into dedicated folders for each design pattern cate
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/<your-username>/CSE-214-Software-Engineering-Sessional.git
-   cd CSE-214-Software-Engineering-Sessional
+   git clone https://github.com/NawrizTurjo/Software-Engineering-Offlines
+   cd Software-Engineering-Offlines
    ```
 
 2. Navigate to the desired folder to explore the examples and code.
