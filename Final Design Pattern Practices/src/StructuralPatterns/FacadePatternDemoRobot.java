@@ -98,7 +98,7 @@ class RobotFacade {
     }
 }
 
-public class FacadePatternDemo {
+public class FacadePatternDemoRobot {
     public static void main(String[] args) {
         RobotFacade facade = new RobotFacade();
         facade.createGreenMilanoRobot();

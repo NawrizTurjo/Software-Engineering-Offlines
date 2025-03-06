@@ -28,8 +28,11 @@ class Product {
 // Step 2: Define the Builder interface
 interface Builder {
     void buildPartA();
+
     void buildPartB();
+
     void buildPartC();
+
     Product getResult();
 }
 
@@ -84,13 +87,13 @@ class ConcreteBuilder2 implements Builder {
 
 // Step 4: Create the Director class
 class Director {
-    private Builder builder;
+    // private Builder builder;
 
-    public void setBuilder(Builder builder) {
-        this.builder = builder;
-    }
+    // public void setBuilder(Builder builder) {
+    // this.builder = builder;
+    // }
 
-    public Product construct() {
+    public Product construct(Builder builder) {
         builder.buildPartA();
         builder.buildPartB();
         builder.buildPartC();
@@ -105,14 +108,14 @@ public class BuilderPatternDemo {
 
         // Use ConcreteBuilder1
         Builder builder1 = new ConcreteBuilder1();
-        director.setBuilder(builder1);
-        Product product1 = director.construct();
+        // director.setBuilder(builder1);
+        Product product1 = director.construct(builder1);
         System.out.println(product1);
 
         // Use ConcreteBuilder2
         Builder builder2 = new ConcreteBuilder2();
-        director.setBuilder(builder2);
-        Product product2 = director.construct();
+        // director.setBuilder(builder2);
+        Product product2 = director.construct(builder2);
         System.out.println(product2);
     }
 }

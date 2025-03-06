@@ -15,7 +15,7 @@ class ConcreteComponent implements Component {
 
 // Step 3: Create an abstract Decorator class
 abstract class Decorator implements Component {
-    protected Component component;
+    protected Component component; // #
 
     public Decorator(Component component) {
         this.component = component;
@@ -64,8 +64,16 @@ public class DecoratorPatternDemo {
         // Further decorate with ConcreteDecoratorB
         Component decoratorB = new ConcreteDecoratorB(decoratorA);
 
+        // ABBBAAABAB
+        Component ABBBAAABAB = new ConcreteDecoratorA(new ConcreteDecoratorB(
+                new ConcreteDecoratorB(new ConcreteDecoratorB(new ConcreteDecoratorA(
+                        new ConcreteDecoratorA(new ConcreteDecoratorA(new ConcreteDecoratorB(
+                                new ConcreteDecoratorA(new ConcreteDecoratorB(component))))))))));
+
+        ABBBAAABAB.operation();
+        System.out.println();
+
         // Execute the operation
         decoratorB.operation();
     }
 }
-

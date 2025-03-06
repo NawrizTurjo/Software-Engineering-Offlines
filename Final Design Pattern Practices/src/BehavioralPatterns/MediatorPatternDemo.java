@@ -39,7 +39,10 @@ abstract class Colleague {
 
     public abstract void receiveMessage(String message, Colleague sender);
 
-    public abstract void sendMessage(String message);
+    public void sendMessage(String message)
+    {
+        mediator.sendMessage(message, this);
+    }
 }
 
 // Concrete Colleague A
@@ -56,7 +59,8 @@ class ConcreteColleagueA extends Colleague {
     @Override
     public void sendMessage(String message) {
         System.out.println("Colleague A sending: " + message);
-        mediator.sendMessage(message, this);
+        // mediator.sendMessage(message, this);
+        super.sendMessage(message);
     }
 }
 
@@ -74,7 +78,8 @@ class ConcreteColleagueB extends Colleague {
     @Override
     public void sendMessage(String message) {
         System.out.println("Colleague B sending: " + message);
-        mediator.sendMessage(message, this);
+        // mediator.sendMessage(message, this);
+        super.sendMessage(message);
     }
 }
 

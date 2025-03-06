@@ -11,7 +11,7 @@ interface Logger {
 }
 
 // Step 2: Create Concrete Handlers
-class InfoLogger implements Logger {
+class InfoLogger implements Logger { // # Handles Info requests
     private LogLevel level;
     private Logger nextLogger;
 
@@ -29,14 +29,15 @@ class InfoLogger implements Logger {
             if (nextLogger != null)
                 return nextLogger.handleRequest(request);
             else {
-                System.out.println(request.level.name() + ": No handler found for this request.");
+                System.out.println(
+                        request.level.name() + ": No handler found for this request.");
                 return false;
             }
         }
     }
 }
 
-class DebugLogger implements Logger {
+class DebugLogger implements Logger { // # Handles Debug requests
     private LogLevel level;
     private Logger nextLogger;
 
@@ -54,14 +55,15 @@ class DebugLogger implements Logger {
             if (nextLogger != null)
                 return nextLogger.handleRequest(request);
             else {
-                System.out.println(request.level.name() + ": No handler found for this request.");
+                System.out.println(
+                        request.level.name() + ": No handler found for this request.");
                 return false;
             }
         }
     }
 }
 
-class ErrorLogger implements Logger { //# Handles all other requests
+class ErrorLogger implements Logger { // # Handles Error requests
     private LogLevel level;
     private Logger nextLogger;
 
@@ -72,14 +74,15 @@ class ErrorLogger implements Logger { //# Handles all other requests
 
     @Override
     public Boolean handleRequest(Requestt request) {
-        if (this.level.compareTo(request.level) <= 0) {
+        if (this.level == request.level) {
             System.out.println(request.level.name() + ": " + request.message);
             return true;
         } else {
             if (nextLogger != null)
                 return nextLogger.handleRequest(request);
             else {
-                System.out.println(request.level.name() + ": No handler found for this request.");
+                System.out.println(
+                        request.level.name() + ": No handler found for this request.");
                 return false;
             }
         }
@@ -103,6 +106,7 @@ public class ChainOfResponsibilityDemo {
         Logger infoLogger = new InfoLogger(null);
         Logger debugLogger = new DebugLogger(infoLogger);
         Logger errorLogger = new ErrorLogger(debugLogger);
+        // Chain: Error -> Debug -> Info, Unhandled requests will be logged as NOTFOUND
         return errorLogger;
     }
 

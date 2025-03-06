@@ -1,12 +1,12 @@
 package CreationalPatterns;
 
 final class SingletonClass {
-    private static SingletonClass instance = new SingletonClass();
+    private static SingletonClass instance;
 
     private SingletonClass() {
     }
 
-    public static SingletonClass getInstance() {
+    public static synchronized SingletonClass getInstance() {
         if (instance == null) {
             instance = new SingletonClass();
         }
