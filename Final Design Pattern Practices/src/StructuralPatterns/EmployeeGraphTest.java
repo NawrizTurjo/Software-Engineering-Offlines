@@ -1,4 +1,4 @@
-package CreationalPatterns;
+package StructuralPatterns;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
